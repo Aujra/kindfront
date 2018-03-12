@@ -1,0 +1,24 @@
+.top_menu_container {
+    background:black;
+    color:white !important;
+    padding-bottom:5px;
+}
+.menu_link {
+    display:inline-block;
+    padding:10px;
+}
+.menu_link a {
+    color:white !important;
+}
+.menu_image_container {
+   position: absolute;
+    left: 45px;
+}
+.top_menu_links {
+    margin-left:145px;
+    padding-top:10px;
+}
+.utility_links {
+    position:absolute;
+    right:10px;
+}
