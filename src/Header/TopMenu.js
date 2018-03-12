@@ -62,7 +62,9 @@ class TopMenu extends Component
                <div className="top_menu_links" dangerouslySetInnerHTML={{__html: this.state.menuLinks}}>
                </div>
                <div className="utility_links">
-                   testtest
+                   <div onClick={this.toggleSearch} className="search_button utility_link" />
+                   <div className="cart_menu_button utility_link" />
+                   <div className="side_menu_button utility_link" />
                </div>
            </div>
         );

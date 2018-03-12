@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TopMenu from './TopMenu.js';
+import TopSearch from "./TopSearch";
 
 class Header extends Component
 {
@@ -7,6 +8,7 @@ class Header extends Component
         return (
             <div id="top_container">
                 <TopMenu />
+                <TopSearch />
             </div>
         );
     }

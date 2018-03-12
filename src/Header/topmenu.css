@@ -21,4 +21,32 @@
 .utility_links {
     position:absolute;
     right:10px;
+    top: 15px;
+}
+.utility_link {
+    display:inline-block;
+    background-size:20px;
+    width:20px;
+    height:20px;
+    padding: 0px 10px;
+}
+.search_button {
+    background-image: url("https://www.iconsdb.com/icons/preview/white/search-xxl.png");
+    background-repeat: no-repeat;
+}
+.cart_menu_button {
+    background-image: url("https://www.iconsdb.com/icons/preview/white/cart-73-xxl.png");
+    background-repeat: no-repeat;
+}
+.side_menu_button {
+    background-image: url("http://game-icons.net/icons/delapouite/originals/svg/hamburger-menu.svg");
+    background-repeat: no-repeat;
+}
+.top_search {
+    float:right;
+    width:25%;
+}
+.menu_search_bar {
+    padding:5px;
+    width:95%;
 }
