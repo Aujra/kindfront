@@ -45,7 +45,6 @@ class TopMenu extends Component
         for (let item of menuData) {
             ret += "<div class='menu_link'><a href='" + item['url'] + "'>" + item['text'] + "</a></div>";
         }
-        console.log(ret);
         return ret;
     }
 
