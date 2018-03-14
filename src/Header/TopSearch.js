@@ -7,9 +7,18 @@ class TopSearch extends Component
         this.state = {searchterm: '', searchresults: ''};
 
         this.doSearch = this.doSearch.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
+    }
+    clearSearch(event)
+    {
+        this.setState({ searchresults: "" });
     }
     doSearch(event) {
         this.setState({searchterm: event.target.value});
+        if (event.target.value.length <= 2) {
+            this.setState({ searchresults: "" });
+            return;
+        }
         var data = require('../data/products.json'); // forward slashes will depend on the file location
         var prods = [];
 
@@ -22,17 +31,31 @@ class TopSearch extends Component
 
     parseResults(prods, term)
     {
-        var results =  [];
+        var nameresults =  [];
+        var descresults =  [];
         for (let item of prods) {
             // alert(item['name'] + " ||| " + term +"|||"+ term.indexOf(item['name']));
-            if (item['name'].includes(term) || item['description'].includes(term))
+            if (item['name'].includes(term))
             {
-                results.push(item);
+                nameresults.push(item);
+            }
+            if (item['description'].includes(term)) {
+                descresults.push(item);
             }
         }
-        var html = "<ul>";
-        for (let res of results) {
-            html += "<li>"+res['name']+"</li>";
+        var finalresults = nameresults.concat(descresults);
+        var filteredArray = finalresults.filter(function(item, pos){
+            return finalresults.indexOf(item)== pos;
+        });
+        var html = "<div style='position:absolute; right:0px; background:white; max-height:350px; overflow:auto; width:100%'>";
+        for (let item of filteredArray) {
+            html += '<div style="display:inline-block; padding:10px; text-align:center;" className="product_item_wrapper"> \
+            <img style="width:50px; height:50px;" src="'+item["picture"]+'" />\
+            \ <div className="clearfix"></div> \
+            <span>'+item['name']+'\
+            <div clasName="clearfix"></div>\
+            <span>'+item['price']+'\
+            </div>';
         }
         html += "</ul>";
 
@@ -42,7 +65,7 @@ class TopSearch extends Component
 render() {
         return (
             <div className="top_search" id="search">
-                <input type="text" value={this.state.searchterm} onChange={this.doSearch} />
+                <input placeholder="Search here..." onBlur={this.clearSearch} onFocus={this.doSearch} className="menu_search_bar" type="text" value={this.state.searchterm} onChange={this.doSearch} />
                 <div dangerouslySetInnerHTML={{__html: this.state.searchresults}} />
             </div>
         );
